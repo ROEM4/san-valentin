@@ -1,51 +1,79 @@
-// ELEMENTOS
 const sobre = document.getElementById("sobre");
 const carta = document.getElementById("carta");
-const botonNo = document.getElementById("no");
-const botonSi = document.getElementById("si");
-const resultado = document.getElementById("resultado");
+const final = document.getElementById("final");
+const btnSi = document.getElementById("si");
+const btnNo = document.getElementById("no");
+const btnWrapper = document.getElementById("btnWrapper");
+const mensaje = document.getElementById("mensaje");
 
-// AL ABRIR EL SOBRE
+let escalaSi = 1;
+let intentos = 0;
+
+const frases = [
+    "¿Amor y un sí?",
+    "Di que sí 🥺",
+    "Mmm… intenta otra vez",
+    "Ese botón no quiere",
+    "El rojo se ve bonito ❤️",
+    "Ya casi 😍",
+    "No hay escapatoria 😏",
+    "Es el destino 💕"
+];
+
+/* EXTRA PRO: vibración + apertura */
 sobre.addEventListener("click", () => {
-  // Animación de sobre desapareciendo
-  sobre.style.transform = "scale(0)";
-  sobre.style.opacity = "0";
+    sobre.classList.add("shake");
 
-  // Mostrar la carta después de animación
-  setTimeout(() => {
-    sobre.style.display = "none";
-    carta.style.display = "block";
-  }, 500);
+    setTimeout(() => {
+        sobre.style.transform = "scale(0) translateY(-120px)";
+        sobre.style.opacity = "0";
+    }, 400);
+
+    setTimeout(() => {
+        sobre.style.display = "none";
+        carta.style.display = "flex";
+    }, 800);
 });
 
-// FUNCIÓN BOTÓN "Sí"
-botonSi.addEventListener("click", () => {
-  resultado.innerText = "Sabía que dirías que sí❤️";
-});
+/* BOTÓN NO */
+function moverNo() {
+    intentos++;
+    mensaje.innerText = frases[Math.min(intentos - 1, frases.length - 1)];
 
-// BOTÓN "No" que esquiva y aumenta "Sí"
-function esquivarNo() {
-  // Mover "No"
-  const maxX = 40;
-  const maxY = 20;
-  const x = Math.random() * maxX - maxX / 2;
-  const y = Math.random() * maxY - maxY / 2;
-  botonNo.style.transform = `translate(${x}px, ${y}px)`;
+    escalaSi += 0.15;
+    btnSi.style.transform = `scale(${escalaSi})`;
 
-  // Agrandar "Sí"
-  const style = window.getComputedStyle(botonSi);
-  const transformMatrix = style.transform;
-  let currentScale = 1;
-  if (transformMatrix && transformMatrix !== "none") {
-    const values = transformMatrix.split("(")[1].split(")")[0].split(",");
-    currentScale = parseFloat(values[0]); // scaleX
-  }
-  const newScale = currentScale + 0.1;
-  botonSi.style.transform = `scale(${newScale})`;
+    btnWrapper.style.flexDirection = "row";
+
+
+    const offset = escalaSi * 20;
+    btnNo.style.transform = `translateX(${intentos % 2 ? offset : -offset}px)`;
 }
 
-// ESCUCHA "No" en desktop
-botonNo.addEventListener("mouseover", esquivarNo);
+btnNo.addEventListener("click", moverNo);
+btnNo.addEventListener("mouseover", () => {
+    if (window.innerWidth > 600) moverNo();
+});
 
-// ESCUCHA "No" en mobile
-botonNo.addEventListener("touchstart", esquivarNo);
+/* BOTÓN SÍ */
+btnSi.addEventListener("click", () => {
+    carta.style.display = "none";
+    final.style.display = "flex";
+    lluvia();
+});
+
+function lluvia() {
+    for (let i = 0; i < 40; i++) {
+        setTimeout(() => {
+            const h = document.createElement("div");
+            h.classList.add("heart");
+            h.innerHTML = "❤️";
+            h.style.left = Math.random() * 100 + "vw";
+            h.style.bottom = "-5vh";
+            h.style.fontSize = Math.random() * 20 + 15 + "px";
+            h.style.animationDuration = Math.random() * 2 + 2 + "s";
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 4000);
+        }, i * 120);
+    }
+}
