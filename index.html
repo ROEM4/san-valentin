@@ -1,32 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Para ti mi niña hermosa💖</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti mi niña hermosa 💖</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Sobre inicial -->
-  <div class="sobre" id="sobre">
-    <div class="solapa"></div>
-    <p class="abrir-texto">Toca aquí para abrir 💌</p>
-  </div>
+<div class="mobile-container">
 
-  <!-- Carta (lo que ya teníamos) -->
-  <div class="card" id="carta">
-    <h1>Mi Nani 💕</h1>
-    <p>Quería preguntarte algo muy importante...</p>
-    <h2>¿Quieres ser mi San Valentín? 💘</h2>
-
-    <div class="buttons">
-      <button id="si">Sí 🤍</button>
-      <button id="no">No 😭</button>
+    <!-- SOBRE -->
+    <div class="sobre" id="sobre">
+        <div class="notificacion">1</div>
+        <p class="abrir-texto">
+            Nuevo mensaje 💌<br>
+            Toca para abrir
+        </p>
     </div>
 
-    <p id="resultado"></p>
-  </div>
+    <!-- CARTA -->
+    <div class="card" id="carta">
+        <h1>Mi Nani 💕</h1>
+        <h2>¿Quieres ser mi San Valentín? 💘</h2>
 
-  <script src="script.js"></script>
+        <!-- GIF debajo de la pregunta -->
+        <div class="gif-pregunta">
+            <img src="bongo-cat-sweet.gif" alt="amor">
+        </div>
+
+        <div class="btn-wrapper" id="btnWrapper">
+            <button id="si">Sí 🤍</button>
+            <button id="no">No 😭</button>
+        </div>
+
+        <p class="mensaje-guia" id="mensaje">Elige una opción</p>
+    </div>
+
+    <!-- FINAL -->
+    <div id="final">
+        <h1 style="font-size: 3rem;">Siii ❤️</h1>
+        <p style="font-size: 1.2rem; color:#444">
+            Sabía que dirías que sí ❤️<br>
+            Te quiero mucho 😍
+        </p>
+
+        <div class="gif-container">
+            <img src="friendship-love.gif">
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
