@@ -1,0 +1,84 @@
+body {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* SOBRE */
+.sobre {
+  width: 300px;
+  height: 200px;
+  background: #ff4d6d;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-direction: column;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.solapa {
+  width: 0; 
+  height: 0; 
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-bottom: 80px solid #ff1a4d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+}
+
+.abrir-texto {
+  color: white;
+  font-weight: bold;
+  margin-top: 120px;
+  text-align: center;
+}
+
+/* CARTA */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  display: none; /* Empieza oculta */
+}
+
+h1, h2 {
+  color: #ff4d6d;
+}
+
+.buttons {
+  position: relative;
+  height: 80px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#si {
+  background: #ff4d6d;
+  color: white;
+  position: relative;  
+}
+
+#no {
+  background: #ddd;
+  position: absolute;
+  right: 0;
+}
